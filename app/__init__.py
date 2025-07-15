@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 from app.apis.routes import items_bp
+from app.errors import register_error_handlers
 from app.extensions import db
 
 def create_app(configs: dict = None) -> Flask:
@@ -22,7 +23,8 @@ def create_app(configs: dict = None) -> Flask:
     # Register blueprints
     app.register_blueprint(items_bp)
 
-    # todo - Register error handlers
+    # Register error handlers
+    register_error_handlers(app)
 
     return app
 

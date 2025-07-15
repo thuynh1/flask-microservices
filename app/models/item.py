@@ -1,7 +1,7 @@
 from datetime import datetime
 from decimal import Decimal
 from pydantic import BaseModel, ConfigDict, Field
-from .common import BaseResponse, Pagination
+from .common import BaseResponse, PaginationMeta
 
 class Item(BaseModel):
     model_config = ConfigDict(from_attributes=True) # ORM support
@@ -20,5 +20,5 @@ class Item(BaseModel):
 # todo - make 'pagination' and 'items' Optional? is this good practice?
 class GetItems(BaseModel):
     items: list[Item] = []
-    pagination: Pagination
+    pagination: PaginationMeta
     base_response: BaseResponse
